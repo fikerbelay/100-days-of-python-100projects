@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/PizzaPy/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.14 (100-days-of-python-100+ projects)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
