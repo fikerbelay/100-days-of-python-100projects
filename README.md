@@ -1,4 +1,5 @@
 100 Days of Python 
+
  📌 Overview
 
 This repository documents my journey through the **100 Days of Code: The Complete Python Pro Bootcamp** challenge. Over 100 days, I'll build **100 Python projects**—from beginner exercises to advanced portfolio applications—covering areas like automation, web development, data science, and game development .
