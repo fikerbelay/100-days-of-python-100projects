@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caesar Cipher Tool</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <div class="container">
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="shiftInput">Shift Amount (1-26)</label>
+                    <label for="shiftInput">Shift Amount (1 to 26)</label>
                     <div class="shift-control">
                         <button class="shift-btn" id="shiftDecrease">-</button>
                         <input type="number" id="shiftInput" min="1" max="26" value="3">
@@ -113,6 +113,12 @@
         const modeBtns = document.querySelectorAll('.mode-btn');
 
         let currentMode = 'encode';
+
+        // Test API connection
+        fetch('/api/test')
+            .then(response => response.json())
+            .then(data => console.log('API test:', data))
+            .catch(() => console.log('Server running'));
 
         // Mode selection
         modeBtns.forEach(btn => {
