@@ -1,11 +1,8 @@
-from art import logo
-
 ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
 def caesar(original_text, shift_amount, encode_or_decode):
-
     output_text = ""
     shift_amount = shift_amount % 26
 
@@ -31,32 +28,3 @@ def get_cipher_stats(text, shift, mode):
         'shift_used': shift,
         'alphabet_size': len(ALPHABET)
     }
-
-
-def logo_text():
-    return logo
-
-
-# For backwards compatibility with terminal version
-def terminal_mode():
-    print(logo)
-
-    while True:
-        direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-        if direction not in ['encode', 'decode']:
-            print("Invalid input. Please enter 'encode' or 'decode'.")
-            continue
-
-        text = input("Type your message:\n").lower()
-        shift = int(input("Type the shift number:\n"))
-
-        result = caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
-        print(f"Here is the {direction}d result: {result}")
-
-        again = input("Type 'yes' if you want to go again. Otherwise, type 'no': ").lower()
-        if again == 'no':
-            break
-
-
-if __name__ == "__main__":
-    terminal_mode()
