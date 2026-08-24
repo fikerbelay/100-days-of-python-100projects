@@ -103,5 +103,3 @@ python main.py
 - **NEW**: Start a new round after game over
 - **Quick Bets**: $25, $50, $100, $200
 - **Custom Bet**: Enter any amount in the bet field
-
-s comprehensive and covers everything from installation to gameplay. You can customize the email and GitHub URL at the bottom to your own! 🎰 
