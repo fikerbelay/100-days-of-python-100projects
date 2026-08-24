@@ -6,7 +6,7 @@ A fully-featured Blackjack game with a modern GUI interface, built with Python a
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Tkinter](https://img.shields.io/badge/tkinter-GUI-orange.svg)
 
-## 🎯 Features
+🎯 Features
 
 ###  Gameplay
 - **Full Blackjack Rules**: Hit, Stand, Deal, and New Round functionality
