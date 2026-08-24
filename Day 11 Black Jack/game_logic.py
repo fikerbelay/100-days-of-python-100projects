@@ -1,3 +1,4 @@
+# game_logic.py - Fixed dealer_play method
 from card_utils import Card, Deck
 
 
@@ -52,7 +53,6 @@ class BlackjackGame:
         return None
 
     def hit(self):
-
         if self.game_state != "PLAYER_TURN":
             return None
 
@@ -63,7 +63,6 @@ class BlackjackGame:
             self.game_state = "GAME_OVER"
             return {"result": "BUST", "message": f"💥 BUST! You lose ${self.bet}!"}
         elif player_score == 21:
-
             return self.stand()
 
         return None
@@ -81,11 +80,12 @@ class BlackjackGame:
         dealer_score = self.calculate_score(self.dealer_hand)
         player_score = self.calculate_score(self.player_hand)
 
+        # Dealer must hit on 16 or less
         while dealer_score < 17:
             self.dealer_hand.append(self.deck.deal())
             dealer_score = self.calculate_score(self.dealer_hand)
 
-
+        # Determine winner
         if dealer_score > 21:
             winnings = self.bet * 2
             self.balance += winnings
@@ -97,12 +97,11 @@ class BlackjackGame:
             self.balance += winnings
             return {"result": "WIN", "message": f"🎉 You win ${self.bet}!", "winnings": winnings}
         else:
-
+            # Push (tie)
             self.balance += self.bet
             return {"result": "PUSH", "message": f"🤝 Push! Bet returned."}
 
     def check_blackjack(self):
-
         dealer_score = self.calculate_score(self.dealer_hand)
 
         if dealer_score == 21:

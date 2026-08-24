@@ -1,3 +1,4 @@
+# gui.py
 import tkinter as tk
 from tkinter import messagebox
 import os
@@ -29,70 +30,78 @@ class BlackjackGUI:
         self.update_display()
         self.update_buttons()
 
+        # Debug: Print to confirm initialization
+        print("GUI initialized successfully!")
+
     def create_card_images(self):
         """Create all card images dynamically"""
-        if not os.path.exists('cards'):
-            os.makedirs('cards')
-
-        for suit in SUITS:
-            for rank in RANKS:
-                # Create image
-                img = Image.new('RGB', (100, 140), 'white')
-                draw = ImageDraw.Draw(img)
-
-                # Draw border
-                draw.rectangle([(2, 2), (98, 138)], outline='black', width=2)
-
-                # Set color based on suit
-                color = 'red' if suit in ['♥', '♦'] else 'black'
-
-                try:
-                    font = ImageFont.truetype("arial.ttf", 20)
-                    big_font = ImageFont.truetype("arial.ttf", 50)
-                except:
-                    font = ImageFont.load_default()
-                    big_font = ImageFont.load_default()
-
-                # Top left
-                draw.text((8, 8), f"{rank}", fill=color, font=font)
-                draw.text((8, 30), f"{suit}", fill=color, font=font)
-
-                # Bottom right
-                draw.text((75, 95), f"{rank}", fill=color, font=font)
-                draw.text((75, 117), f"{suit}", fill=color, font=font)
-
-                # Center large suit
-                draw.text((35, 45), f"{suit}", fill=color, font=big_font)
-
-                filename = f"cards/{rank}_{suit}.png"
-                img.save(filename)
-
-                # Load for tkinter
-                img = Image.open(filename)
-                img = img.resize((100, 140), Image.Resampling.LANCZOS)
-                self.card_images[f"{rank}{suit}"] = ImageTk.PhotoImage(img)
-
-        # Create back of card
-        img = Image.new('RGB', (100, 140), '#2c3e50')
-        draw = ImageDraw.Draw(img)
-
-        for i in range(0, 100, 20):
-            draw.line([(i, 0), (i, 140)], fill='#34495e', width=1)
-        for i in range(0, 140, 20):
-            draw.line([(0, i), (100, i)], fill='#34495e', width=1)
-
-        draw.rectangle([(2, 2), (98, 138)], outline='#95a5a6', width=2)
-
         try:
-            font = ImageFont.truetype("arial.ttf", 30)
-        except:
-            font = ImageFont.load_default()
-        draw.text((25, 55), "♠", fill='#95a5a6', font=font)
+            if not os.path.exists('cards'):
+                os.makedirs('cards')
 
-        img.save("cards/back.png")
-        img = Image.open("cards/back.png")
-        img = img.resize((100, 140), Image.Resampling.LANCZOS)
-        self.back_image = ImageTk.PhotoImage(img)
+            for suit in SUITS:
+                for rank in RANKS:
+                    # Create image
+                    img = Image.new('RGB', (100, 140), 'white')
+                    draw = ImageDraw.Draw(img)
+
+                    # Draw border
+                    draw.rectangle([(2, 2), (98, 138)], outline='black', width=2)
+
+                    # Set color based on suit
+                    color = 'red' if suit in ['♥', '♦'] else 'black'
+
+                    try:
+                        font = ImageFont.truetype("arial.ttf", 20)
+                        big_font = ImageFont.truetype("arial.ttf", 50)
+                    except:
+                        font = ImageFont.load_default()
+                        big_font = ImageFont.load_default()
+
+                    # Top left
+                    draw.text((8, 8), f"{rank}", fill=color, font=font)
+                    draw.text((8, 30), f"{suit}", fill=color, font=font)
+
+                    # Bottom right
+                    draw.text((75, 95), f"{rank}", fill=color, font=font)
+                    draw.text((75, 117), f"{suit}", fill=color, font=font)
+
+                    # Center large suit
+                    draw.text((35, 45), f"{suit}", fill=color, font=big_font)
+
+                    filename = f"cards/{rank}_{suit}.png"
+                    img.save(filename)
+
+                    # Load for tkinter
+                    img = Image.open(filename)
+                    img = img.resize((100, 140), Image.Resampling.LANCZOS)
+                    self.card_images[f"{rank}{suit}"] = ImageTk.PhotoImage(img)
+
+            # Create back of card
+            img = Image.new('RGB', (100, 140), '#2c3e50')
+            draw = ImageDraw.Draw(img)
+
+            for i in range(0, 100, 20):
+                draw.line([(i, 0), (i, 140)], fill='#34495e', width=1)
+            for i in range(0, 140, 20):
+                draw.line([(0, i), (100, i)], fill='#34495e', width=1)
+
+            draw.rectangle([(2, 2), (98, 138)], outline='#95a5a6', width=2)
+
+            try:
+                font = ImageFont.truetype("arial.ttf", 30)
+            except:
+                font = ImageFont.load_default()
+            draw.text((25, 55), "♠", fill='#95a5a6', font=font)
+
+            img.save("cards/back.png")
+            img = Image.open("cards/back.png")
+            img = img.resize((100, 140), Image.Resampling.LANCZOS)
+            self.back_image = ImageTk.PhotoImage(img)
+
+            print(f"Created {len(self.card_images)} card images")
+        except Exception as e:
+            print(f"Error creating card images: {e}")
 
     def setup_ui(self):
         """Setup the GUI layout"""
@@ -280,13 +289,17 @@ class BlackjackGUI:
         )
         self.status_label.pack(pady=10)
 
+        print("UI Setup complete!")
+
     def set_bet(self, amount):
         """Quick set bet amount"""
         self.bet_entry.delete(0, tk.END)
         self.bet_entry.insert(0, str(amount))
 
     def update_buttons(self):
+        """Update button states based on game state"""
         state = self.game.game_state
+        print(f"Updating buttons for state: {state}")
 
         if state == "BETTING":
             self.deal_button.config(state='normal')
@@ -314,12 +327,13 @@ class BlackjackGUI:
             self.bet_entry.config(state='disabled')
 
     def deal(self):
+        """Handle deal button click"""
+        print("Deal button clicked!")
         try:
             bet_amount = int(self.bet_entry.get())
         except ValueError:
             messagebox.showwarning("Invalid Bet", "Please enter a valid number!")
             return
-
 
         success, message = self.game.place_bet(bet_amount)
         if not success:
@@ -327,7 +341,6 @@ class BlackjackGUI:
             return
 
         result = self.game.deal_cards()
-
         self.update_display()
         self.update_buttons()
         self.update_balance()
@@ -337,7 +350,11 @@ class BlackjackGUI:
             self.status_label.config(text=result["message"])
             self.update_buttons()
 
+        print(f"Deal complete. Game state: {self.game.game_state}")
+
     def hit(self):
+        """Handle hit button click"""
+        print("Hit button clicked!")
         result = self.game.hit()
         self.update_display()
         self.update_balance()
@@ -348,6 +365,8 @@ class BlackjackGUI:
             self.update_buttons()
 
     def stand(self):
+        """Handle stand button click"""
+        print("Stand button clicked!")
         result = self.game.stand()
         self.update_display(show_all=True)
         self.update_balance()
@@ -357,6 +376,8 @@ class BlackjackGUI:
             self.update_buttons()
 
     def new_round(self):
+        """Start a new round"""
+        print("New round!")
         self.game.reset()
         self.update_display()
         self.update_buttons()
@@ -364,32 +385,73 @@ class BlackjackGUI:
         self.status_label.config(text="💰 Place your bet and click DEAL!")
 
     def update_display(self, show_all=False):
+        """Update the card display"""
         state = self.game.get_game_state()
 
+        # Clear frames
         for widget in self.dealer_cards_frame.winfo_children():
             widget.destroy()
         for widget in self.player_cards_frame.winfo_children():
             widget.destroy()
 
+        # Display dealer cards
         dealer_hand = state["dealer_hand"]
-        for i, card in enumerate(dealer_hand):
-            if i == 0 and not show_all and state["state"] == "PLAYER_TURN":
-                img_label = tk.Label(
-                    self.dealer_cards_frame,
-                    image=self.back_image,
-                    bg='#1a472a'
-                )
-            else:
+        if dealer_hand:
+            for i, card in enumerate(dealer_hand):
+                if i == 0 and not show_all and state["state"] == "PLAYER_TURN":
+                    # Show back of card for first card during player's turn
+                    if self.back_image:
+                        img_label = tk.Label(
+                            self.dealer_cards_frame,
+                            image=self.back_image,
+                            bg='#1a472a'
+                        )
+                    else:
+                        img_label = tk.Label(
+                            self.dealer_cards_frame,
+                            text="??",
+                            font=('Arial', 20),
+                            bg='#2c3e50',
+                            fg='white',
+                            width=10,
+                            height=8,
+                            relief='solid'
+                        )
+                else:
+                    # Show actual card
+                    key = f"{card.rank}{card.suit}"
+                    if key in self.card_images:
+                        img_label = tk.Label(
+                            self.dealer_cards_frame,
+                            image=self.card_images[key],
+                            bg='#1a472a'
+                        )
+                    else:
+                        img_label = tk.Label(
+                            self.dealer_cards_frame,
+                            text=str(card),
+                            font=('Arial', 14),
+                            bg='white',
+                            width=10,
+                            height=8,
+                            relief='solid'
+                        )
+                img_label.pack(side=tk.LEFT, padx=2)
+
+        # Display player cards
+        player_hand = state["player_hand"]
+        if player_hand:
+            for card in player_hand:
                 key = f"{card.rank}{card.suit}"
                 if key in self.card_images:
                     img_label = tk.Label(
-                        self.dealer_cards_frame,
+                        self.player_cards_frame,
                         image=self.card_images[key],
                         bg='#1a472a'
                     )
                 else:
                     img_label = tk.Label(
-                        self.dealer_cards_frame,
+                        self.player_cards_frame,
                         text=str(card),
                         font=('Arial', 14),
                         bg='white',
@@ -397,29 +459,9 @@ class BlackjackGUI:
                         height=8,
                         relief='solid'
                     )
-            img_label.pack(side=tk.LEFT, padx=2)
+                img_label.pack(side=tk.LEFT, padx=2)
 
-        player_hand = state["player_hand"]
-        for card in player_hand:
-            key = f"{card.rank}{card.suit}"
-            if key in self.card_images:
-                img_label = tk.Label(
-                    self.player_cards_frame,
-                    image=self.card_images[key],
-                    bg='#1a472a'
-                )
-            else:
-                img_label = tk.Label(
-                    self.player_cards_frame,
-                    text=str(card),
-                    font=('Arial', 14),
-                    bg='white',
-                    width=10,
-                    height=8,
-                    relief='solid'
-                )
-            img_label.pack(side=tk.LEFT, padx=2)
-
+        # Update scores
         if state["player_hand"]:
             self.player_score_label.config(text=f"Score: {state['player_score']}")
         else:
@@ -438,6 +480,7 @@ class BlackjackGUI:
                 self.dealer_score_label.config(text="")
 
     def update_balance(self):
+        """Update balance display"""
         state = self.game.get_game_state()
         self.balance_label.config(text=f"💰 Balance: ${state['balance']}")
 
@@ -452,6 +495,7 @@ class BlackjackGUI:
 
 
 def run_gui():
+    """Create and run the GUI"""
     root = tk.Tk()
     app = BlackjackGUI(root)
     root.mainloop()
