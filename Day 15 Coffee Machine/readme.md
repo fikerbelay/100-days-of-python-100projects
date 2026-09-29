@@ -1,4 +1,3 @@
-```markdown
 # ☕ Coffee Machine
 
 A CLI-based coffee machine simulator built in Python, as part of my **#100Projects** challenge. Order drinks, insert coins, get change, and keep an eye on the machine's resources.
@@ -87,8 +86,5 @@ python main.py
 
 ## 🏆 Part of #100Projects
 
-This is project **[X]/100** in my journey to build 100 projects.
+This is project **15/100** in my journey to build 100 projects.
 
-
-   # only after checking ALL ingredients
-   ```
