@@ -162,6 +162,4 @@ python DayXX/project-name/main.py
 
 
 
-## 📫 Connect With Me
-- **LinkedIn:** *[[Add your LinkedIn profile]](https://www.linkedin.com/in/fiker-belay/)*
 
