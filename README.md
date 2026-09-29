@@ -2,7 +2,7 @@
 
  📌 Overview
 
-This repository documents my journey through the **100 Days of Code: The Complete Python Pro Bootcamp** challenge. Over 100 days, I'll build **100 Python projects**—from beginner exercises to advanced portfolio applications—covering areas like automation, web development, data science, and game development .
+This repository documents my journey through the **100 Days of Code: The Complete Python Pro Bootcamp** challenge. Over 100 days, I'll build **100 Python projects** from beginner exercises to advanced portfolio applications covering areas like automation, web development, data science, and game development.
 
  📂 Repository Structure
 
@@ -155,8 +155,8 @@ python DayXX/project-name/main.py
 
 | Segment | Days | Status | Projects |
 |---------|------|--------|----------|
-| **Beginners** | 1-14 | ⏳ In Progress | Basics, Games, CLI tools |
-| **Intermediate** | 15-36 | ⏳ Planned | OOP, GUI, APIs, Turtle |
+| **Beginners** | 1-14 | complete | Basics, Games, CLI tools |
+| **Intermediate** | 15-36 | ⏳ In Progress | OOP, GUI, APIs, Turtle |
 | **Advanced** | 37-63 | ⏳ Planned | Web Scraping, Automation, Flask |
 | **Expert** | 64-100 | ⏳ Planned | Web Development, Data Science, ML |
 
