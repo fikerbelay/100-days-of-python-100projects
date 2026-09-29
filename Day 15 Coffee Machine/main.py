@@ -42,8 +42,7 @@ def check_resource(drink):
         if MENU[drink]['ingredients'][needs] > resources[needs]:
             print(f"Sorry there is not enough {needs}.")
             return False
-        else:
-            return True
+    return True
 
 def  make_drink(drink):
     if check_resource(drink):
@@ -70,7 +69,7 @@ def payment (drink):
         print("Sorry that's not enough money. Money refunded.")
         return False
     elif paid_money >= cost:
-        print(f"Here is ${(paid_money - cost).__round__(2)} dollars in change.")
+        print(f"Here is ${round(paid_money - cost, 2)} dollars in change.")
         resources["money"] += cost
         print(f"Here is your {drink}. Enjoy!")
         return True
