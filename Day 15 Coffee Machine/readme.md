@@ -86,5 +86,5 @@ python main.py
 
 ## 🏆 Part of #100Projects
 
-This is project **[15]/100** in my journey to build 100 projects.
+This is project **15/100** in my journey to build 100 projects.
 
