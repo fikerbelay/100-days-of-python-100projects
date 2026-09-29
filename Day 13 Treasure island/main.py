@@ -1,4 +1,4 @@
-print("Welcome to Treasure island. \nYour mission is to find the treasure.")
+print("Welcome to Day 13 Treasure island. \nYour mission is to find the treasure.")
 print("You're at a cross road. where do you want to go? \n")
 direction = input('Type "left" or "right" ')
 
