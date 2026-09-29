@@ -4,7 +4,7 @@ A fun CLI-based number guessing game built in Python as part of my **#100Project
 
 ## 📖 About
 
-The computer thinks of a random number between 1 and 100, and it's your job to guess it before you run out of attempts. Choose your difficulty wisely — you only get so many tries!
+The computer thinks of a random number between 1 and 100, and it's your job to guess it before you run out of attempts. Choose your difficulty wisely you only get so many tries!
 
 ## 🎮 How to Play
 
@@ -14,7 +14,7 @@ The computer thinks of a random number between 1 and 100, and it's your job to g
    - **hard** → 5 attempts
 3. Enter your guess when prompted.
 4. The game will tell you if your guess is **Too High** or **Too Low**.
-5. Keep guessing until you find the number — or run out of attempts!
+5. Keep guessing until you find the number or run out of attempts!
 
 ## 🛠️ Requirements
 
