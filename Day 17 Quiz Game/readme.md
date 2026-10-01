@@ -1,5 +1,5 @@
 
-# Day 17 — Quiz Game 🧠
+# Day 17 Quiz Game 🧠
 
 A command-line True/False quiz game built in Python as part of the **100 Days of Python** challenge.
 
@@ -123,7 +123,3 @@ process.fetch()
 ## 📚 Part of
 
 [100 Days of Code — The Complete Python Pro Bootcamp] **Day 17: Quiz Game**
-
----
-
-iz_brain.py`, and `question_model.py` and I'll tweak the README so the code snippets match exactly what's on disk.
