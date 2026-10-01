@@ -6,16 +6,18 @@ def random_color():
     r = randint(0, 255)
     g = randint(0, 255)
     b = randint(0, 255)
-    tup = (r, g, b)
-    return tup
+    rgb = (r, g, b)
+    return rgb
 
-tim.setheading(0)
+
 tim.pensize(40)
 turtle.colormode(255)
 tim.speed("fastest")
 
 tim.penup()
 tim.goto(-300,250)
+
+
 
 def paint():
     for _ in range(16):
