@@ -1,4 +1,5 @@
+from quiz_brain import ProcessQuestion
 
-import quiz_brain
+start = ProcessQuestion()
 
-process = quiz_brain.ProcessQuestion()
+start.fetch()
