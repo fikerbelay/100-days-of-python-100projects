@@ -1,4 +1,4 @@
-Day 19 — Turtle Race 🐢
+Turtle Race 🐢
 
 A fun little turtle racing game built with Python's `turtle` module. Place your bet on which colored turtle you think will win, then watch them race across the screen!
 
